@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { __dirname } from "./utils.js";
 import indexRouter from "./routes/index.js";
+import cors from "cors";
 import "./config/database.js"; //requiero la configuracion de la db
 
 let app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
 
 app.use("/", indexRouter);
 
