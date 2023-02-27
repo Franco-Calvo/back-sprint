@@ -19,10 +19,10 @@ router.post("/", async (req, res) => {
     req.body.is_verified = false;
     req.body.verify_code = "2sjns8120mmfh1020sm1ñ29";
     let user = await User.create(req.body);
-    return res.status(201).send("Se crearon los users");
+    return res.status(201).json("Se crearon los users");
   } catch (error) {
     console.log(error);
-    return res.status(400).send("No se pudo crear");
+    return res.status(400).json("No se pudo crear");
   }
 });
 
