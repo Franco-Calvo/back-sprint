@@ -7,6 +7,7 @@ import logger from "morgan";
 import { __dirname } from "./utils.js";
 import indexRouter from "./routes/index.js";
 import cors from "cors";
+import axios from "axios";
 import "./config/database.js"; //requiero la configuracion de la db
 
 let app = express();
