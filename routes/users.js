@@ -1,6 +1,7 @@
 import express from "express";
 import User from "./../models/User.js";
-
+import postSchema from "../schemas/users";
+import validator from "../middleware/validator"
 let router = express.Router();
 
 router.get("/", (req, res) => {
@@ -9,7 +10,7 @@ router.get("/", (req, res) => {
     .send("Acá deberías ver todos los usuarios"); // Send envía mensajes al cliente
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validator(postSchema), async (req, res) => {
   // Crear Users
   try {
     req.body.is_online = false;
@@ -19,10 +20,17 @@ router.post("/", async (req, res) => {
     req.body.is_verified = false;
     req.body.verify_code = "2sjns8120mmfh1020sm1ñ29";
     let user = await User.create(req.body);
-    return res.status(201).json("Se crearon los users");
+    return res.json({
+      succes: true,
+      user: user,
+      id: user._id,
+    });
   } catch (error) {
     console.log(error);
-    return res.status(400).json("No se pudo crear");
+    return res.json({
+      succes: false,
+      message: "No se pudo crear el usuario",
+    });
   }
 });
 
