@@ -13,7 +13,7 @@ const schema = Joi.object({
       invalid: "No es un object",
     }),
   password: Joi.string().required().min(8).max(50),
-  photo: Joi.string().required().uri().min(8),
+  //photo: Joi.string().required().uri().min(8),
 });
 
 export default schema;

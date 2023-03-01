@@ -1,5 +1,5 @@
-import router from "../routes/users";
-import schema from "../schemas/users";
+import router from "../routes/users.js";
+import schema from "../schemas/users.js";
 
 // @schema es el esquema de validación del joi (es necesario importar el shcema en el archivo donde se ejecute el middleware)
 // @validate es un método de joi para validar los datos del schema requiere que invoquemos el schema de validación y necesita dos parámetros para funcionar
@@ -11,7 +11,7 @@ const validator = (schema) => [
     const validation = schema.validate(req.body, { abortEarly: false });
     if (validation.error) {
       //Si existe la propiedad error en la validación hay almenos 1 error en los datos del formulario
-      return res.status(200).json({
+      return res.status(400).json({
         succes: false,
         message: validation.error.details.map((error) => error.message),
       });

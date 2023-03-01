@@ -1,7 +1,7 @@
 import express from "express";
 import User from "./../models/User.js";
-import postSchema from "../schemas/users";
-import validator from "../middleware/validator"
+import postSchema from "../schemas/users.js";
+import validator from "../middleware/validator.js"
 let router = express.Router();
 
 router.get("/", (req, res) => {
