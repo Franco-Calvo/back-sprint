@@ -1,30 +1,13 @@
 import express from "express";
-import Author from "./../models/Author.js";
+import controller from "../controllers/authors/create.js";
+import schema from "../schemas/authors.js";
+import validator from '../middleware/validator.js'
+import is_active from "../middleware/authors/is_active.js";
+//import passport from '../middleware/passport.js'
+
+const { create } = controller
 let router = express.Router();
 
-router.get("/", (req, res) => {
-    return res
-      .status(200)
-      .send("Acá deberías ver todos los autores");
-  });
-
-router.post("/", async (req, res) => {
-  try {
-    req.body.user_id='63fe72b7c75248e38d293139';
-    req.body.active=true;
-    let author = await Author.create(req.body);
-    return res.json({
-      succes: true,
-      author: author
-    });
-  } catch (error) {
-    console.log(error);
-    return res.json({
-      succes: false,
-      error:error,
-      message: "No se pudo crear el autor",
-    });
-  }
-});
+router.post("/authors"/*,passport.authenticate('jwt',{session:false})*/,validator(schema),create );
 
 export default router;

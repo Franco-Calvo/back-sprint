@@ -45,6 +45,6 @@ router.get('/', function(req, res, next) {
 //rutas de todos los recursos
 //a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
 router.use('/auth',userRouter)
-router.use("/api/authors", authorRouter)
+router.use("/api", authorRouter)
 
 export default router
