@@ -6,7 +6,7 @@ async function is_active(req,res,next) {
         return next()
     }
     return res.status(400).json({
-        succes:'False',
+        succes:false,
         message: 'Author is not active!',
         data: author
     })
