@@ -1,8 +1,10 @@
-import userRouter from "./users.js";
+import userRouter from './users.js'
 import authorRouter from "./authors.js"
-import createError from "http-errors";
 
-import express from "express";
+// import createError from 'http-errors';
+
+
+import express from 'express'
 let router = express.Router();
 
 function authorIsActive(req, res, next) {
@@ -36,30 +38,13 @@ function authorIsActive(req, res, next) {
 }
 
 /* GET home page. */
-router.get(
-  "/",
-  /*passport.authenticate()*/ authorIsActive,
-  function (req, res, next) {
-    // try {
-    //   let user;
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
-    //   if(user){
-    //     return res.status(200).json({
-    //       user: user
-    //     })
-    //   }
-    //   return next(createError(404, 'Usuario no encontrado'))
-    // } catch (err){
-    //   next(createError(500, 'Algo salió mal'))
-    // }
+//rutas de todos los recursos
+//a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
+router.use('/auth',userRouter)
+router.use("/api/authors", authorRouter)
 
-    res.status(200).json({
-      message: "Llegaste hasta el controlador",
-    });
-  }
-);
-
-router.use("/users", userRouter);
-router.use("/api/authors", authorRouter);
-
-export default router;
+export default router

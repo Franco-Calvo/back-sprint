@@ -16,7 +16,7 @@ const validator = (schema) => [
         message: validation.error.details.map((error) => error.message),
       });
     }
-    next();
+    return next();
   },
 ];
 

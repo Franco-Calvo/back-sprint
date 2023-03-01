@@ -11,6 +11,7 @@ import axios from "axios";
 import "./config/database.js"; //requiero la configuracion de la db
 import { create } from "domain";
 import { errorHandler } from "./middleware/error.js";
+import { errorNotFound } from "./middleware/error.js";
 let app = express();
 
 app.set("views", path.join(__dirname, "views"));
@@ -30,9 +31,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 
-function errorNotFound(req, res, next){
-  next(createError(404, 'La ruta no existe'))
-}
 
 app.use(errorNotFound)
 
