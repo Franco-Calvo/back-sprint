@@ -1,10 +1,6 @@
 import Joi from "joi-oid";
 
-const schema = Joi.object({
-  name: Joi.string().required().min(3).max(20).messages({
-    "string.min": "The name must have at least 3 characters",
-    "string.max": "The name must have a maximum of 20 characters",
-  }),
+const schema_signin = Joi.object({
   email: Joi.string()
     .required()
     .min(8)
@@ -18,4 +14,4 @@ const schema = Joi.object({
   }),
 });
 
-export default schema;
+export default schema_signin;
