@@ -12,6 +12,14 @@ const schema = Joi.object({
     .messages({
       invalid: "Not an object",
     }),
+  photo: Joi.string()
+    .uri()
+    .required()
+    .min(8)
+    .messages({
+      "string.required": "Photo required",
+      "string.uri": "Url required"
+    }),
   password: Joi.string().required().min(8).max(50).messages({
     "string.min": "Password must be at least 8 characters",
     "string.max": "The password must have a maximum of 20 characters",
