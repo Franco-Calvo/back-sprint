@@ -1,12 +1,15 @@
-import User from '../../models/User.js'
+import Author from '../../models/Author.js';
 
-async function findAuthorIdByUserId(userId) {
-  const user = await User.findById(userId);
-  if (user.is_author) {
-    return user._id; 
+async function finds_id(req, res, next) {
+  const author = await Author.findOne({user_id: req.user._id});
+  if (author) {
+    req.body.author_id = author._id
+    return next() 
   } else {
-    return null; 
+    return res.status(404).json({
+
+    }); 
   }
 }
 
-export default findAuthorIdByUserId
+export default finds_id

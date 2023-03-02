@@ -1,5 +1,5 @@
 import express from "express";
-import userRouter from "./users.js";
+import userRouter from "./auth.js";
 import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
