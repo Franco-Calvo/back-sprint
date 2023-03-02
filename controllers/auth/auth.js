@@ -60,6 +60,23 @@ const controller = {
       next(error);
     }
   },
+
+  sign_in_token: async (req, res, next) => {
+    try {
+      let user = await User.findOneAndUpdate(
+        { email: req.user.email }, //parametro de busqueda
+        { is_online: true }, //parámetro a modificar
+        { new: true } //para que devuelva el objeto modificado
+      );
+      const token = res.token
+      console.log(token);
+      return res.status(200).json({
+        message: "Logged in user!",
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 export default controller;
