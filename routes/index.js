@@ -1,8 +1,6 @@
 import userRouter from './users.js'
 import authorRouter from "./authors.js"
-
-// import createError from 'http-errors';
-
+import mangaRouter from './manga.js'
 
 import express from 'express'
 let router = express.Router();
@@ -16,5 +14,6 @@ router.get('/', function(req, res, next) {
 //a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
 router.use('/auth',userRouter)
 router.use("/api", authorRouter)
+router.use("/mangas",mangaRouter);
 
 export default router

@@ -46,13 +46,12 @@ const controller = {
   sign_out: async (req, res, next) => {
     const { email } = req.user;
 
-    try { await User.findOneAndUpdate(
+    try {
+      await User.findOneAndUpdate(
         { email },
         { is_online: false },
         { new: true }
-        
       );
-          
 
       return res.status(200).json({
         message: "Offline user!",
