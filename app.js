@@ -31,18 +31,14 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/manga",mangaRouter);
 
-function errorNotFound(req, res, next){
-  next(createError(404, 'La ruta no existe'))
-}
-
-app.use(errorNotFound)
-
-app.use(errorHandler)
 
 
 app.use(errorNotFound)
 
 app.use(errorHandler)
+
+
+
 
 
 export default app;
