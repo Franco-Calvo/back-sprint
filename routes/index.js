@@ -1,7 +1,10 @@
 import userRouter from "./users.js";
 import createError from "http-errors";
+import chapters from "./chapters.js";
+
 
 import express from "express";
+import chapterCreate from "../controllers/chapters/create.js";
 let router = express.Router();
 
 function authorIsActive(req, res, next) {
@@ -59,5 +62,7 @@ router.get(
 );
 
 router.use("/users", userRouter);
+
+router.use("/chapters", chapterCreate.create)
 
 export default router;
