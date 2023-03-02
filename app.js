@@ -10,10 +10,13 @@ import mangaRouter from "./routes/manga.js";
 import cors from "cors";
 import "./config/database.js"; //requiero la configuracion de la db
 import { errorHandler } from "./middleware/error.js";
+import { errorNotFound } from "./middleware/error.js";
 let app = express();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+
 
 //middlewars
 app.use(logger("dev"));
@@ -35,5 +38,11 @@ function errorNotFound(req, res, next){
 app.use(errorNotFound)
 
 app.use(errorHandler)
+
+
+app.use(errorNotFound)
+
+app.use(errorHandler)
+
 
 export default app;
