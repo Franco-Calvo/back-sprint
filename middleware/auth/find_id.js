@@ -7,7 +7,8 @@ async function finds_id(req, res, next) {
     return next() 
   } else {
     return res.status(404).json({
-
+      succes: false,
+      message: "Error find_id"
     }); 
   }
 }
