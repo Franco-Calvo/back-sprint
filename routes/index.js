@@ -1,5 +1,6 @@
 import express from "express";
-import userRouter from "./users.js";
+import userRouter from './users.js'
+import authorRouter from "./authors.js"
 import chapterRouter from "./chapters.js";
 import mangaRouter from './manga.js'
 
@@ -10,8 +11,11 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.use('/auth', userRouter)
-router.use("/mangas", mangaRouter);
+//rutas de todos los recursos
+//a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
+router.use('/auth',userRouter)
+router.use("/authors", authorRouter)
+router.use("/mangas",mangaRouter);
 router.use("/chapters", chapterRouter)
 
 export default router
