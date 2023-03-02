@@ -1,39 +1,8 @@
 import userRouter from './users.js'
-// import createError from 'http-errors';
-
+import mangaRouter from './manga.js'
 
 import express from 'express'
 let router = express.Router();
-
-function authorIsActive(req, res, next) {
-  //Esto viene de passport
-  req.user = {
-    is_author: true,
-    is_active: true,
-  };
-
-  //Tener otro middleware o dentro del mismo verificar si es author
-  if (req.user.is_author) {
-    if (req.user.is_active) {
-      next();
-    }
-  }
-
-  function isAuthor(req, res, next) {
-    req.user = {
-      is_author: true,
-      is_active: true,
-    };
-
-    if (req.user.is_author) {
-      next();
-    }
-
-    return res.status(400).json({
-      message: "Bad request",
-    });
-  }
-}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -43,5 +12,6 @@ router.get('/', function(req, res, next) {
 //rutas de todos los recursos
 //a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
 router.use('/auth',userRouter)
+router.use("/mangas",mangaRouter);
 
 export default router
