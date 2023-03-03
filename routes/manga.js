@@ -1,33 +1,17 @@
-import express from "express";
-import mangaCreate from "../schemas/mangaCreate.js";
-import Manga from "../models/manga.js"
-import validator from "../middleware/validator.js"
+import express from 'express'
+import mangaSchema from '../schemas/mangas.js'
+import validator from '../middleware/validator.js'
+import mangaCreate from '../controllers/manga/create.js'
+import exist_title from '../middleware/manga/exist_title.js'
+import is_active from '../middleware/authors/is_active.js'
+import passport from '../middleware/passport.js'
 
-
-let router = express.Router();
-
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.status(200).send("New Manga");
+let router = express.Router()
+const { create } = mangaCreate
+router.get('/', function (req, res, next) {
+    res.send('New Manga');
 });
-router.post("/", validator(mangaCreate),
-  async (req, res) => {
-    try {
-      req.body.author_id = "63fe8112f09373806fd89fe5"
 
-      let manga = await Manga.create(req.body);
-      return res.status(201).json({
-        success: true,
-        message: "Se pudo crear New Manga",
+router.post("/",passport.authenticate('jwt',{session:false}),is_active, validator(mangaSchema),exist_title, create);
 
-      });
-    } catch (err) {
-      console.log(err);
-      return res.status(400).json({
-        success: false,
-        message: "No se pudo crear New Manga",
-      });
-    }
-  });
-
-export default router;
+export default router
