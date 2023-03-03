@@ -1,20 +1,21 @@
-import Chapter from '../../models/Chapter.js'
+import Chapter from "../../models/Chapter.js"
 
-const chapterCreate = {
-    create: async (req, res, next) => {
+const controller = {
+    create: async (req, res) => {
         try {
-            const chapter = await Chapter.create(req.body)
-            res.status(201).json({
+            let chapter = await Chapter.create(req.body)
+            return res.status(201).json({
                 success: true,
-                response: chapter,
+                message: 'Chapter created successfully ',
+                chapter: chapter
             })
-        } catch (error) {
-            next(error)
+        }
+        catch (err) {
+            console.log(err)
+            return res.status(400).send('Could not create chapter')
+
         }
     }
-
 }
 
-export default chapterCreate
-
-
+export default controller

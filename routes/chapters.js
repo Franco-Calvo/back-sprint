@@ -1,12 +1,23 @@
 import express from 'express'
-let router = express.Router()
-import chapterCreate from '../controllers/chapters/create.js'
+import Chapter from '../models/Chapter.js';
+import controller from '../controllers/chapters/create.js'
+let router = express.Router();
 
-const { create } = chapterCreate
-router.get('/', function (req, res, next) {
-    res.send('chapters here');
-});
-
-router.post('/', create)
+router.post('/', async (req, res) => {
+    try {
+        req.body.manga_id = '63ffafade652fa554fe009eb'
+        let controller = await Chapter.create(req.body)
+        return res.status(201).json({
+            success: true,
+            message: "capitulo creado correctamente.",
+            controller: controller
+        })
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: 'no se pudo crear el capitulo'
+        })
+    }
+})
 
 export default router
