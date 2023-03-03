@@ -8,10 +8,10 @@ import passport from '../middleware/passport.js'
 
 let router = express.Router()
 const { create } = mangaCreate
-router.get('/', function (req, res, next) {
+/* router.get('/', function (req, res, next) {
     res.send('New Manga');
-});
+}); */
 
-router.post("/",passport.authenticate('jwt',{session:false}),is_active, validator(mangaSchema),exist_title, create);
+router.post("/", passport.authenticate('jwt',{session:false}) ,is_active, validator(mangaSchema),exist_title, create);
 
 export default router
