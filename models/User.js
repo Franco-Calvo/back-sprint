@@ -11,7 +11,7 @@ let schema = new mongoose.Schema(
     is_company: { type: Boolean },
     is_verified: { type: Boolean },
     verify_code: { type: String },
-    photo: { type: String },
+    photo: { type: String, required: true},
   },
   {
     timestamps: true,
