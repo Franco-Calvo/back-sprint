@@ -23,7 +23,7 @@ const schema = Joi.object({
     "string.min": "The photo url must have at least 8 characters",
   }),
   user_id: Joi.object({a: Joi.string()}).required().max(1).messages({
-    "object.max": "The user_id must have at least 8 characters",
+    "object.max": "Not a correct object",
   }),
   active: Joi.boolean().required().messages({
     invalid: "Not a Boolean",
