@@ -1,23 +1,24 @@
 import express from 'express'
-import Chapter from '../models/Chapter.js';
-import controller from '../controllers/chapters/create.js'
-let router = express.Router();
+import chapterCreate from '../controllers/chapters/create.js'
+import postschema from '../schemas/chapters.js'
+import validator from '../middleware/validator.js'
+import passport from '../middleware/passport.js'
+import nextOrder from '../middleware/chapters/next_order.js'
+import addFrontPhoto from '../middleware/chapters/add_front_photo.js'
+import existsOrder from '../middleware/chapters/exists_order.js'
+import is_active from '../middleware/authors/is_active.js'
+import is_property_of from '../middleware/authors/is_property_of.js'
 
-router.post('/', async (req, res) => {
-    try {
-        req.body.manga_id = '63ffafade652fa554fe009eb'
-        let controller = await Chapter.create(req.body)
-        return res.status(201).json({
-            success: true,
-            message: "capitulo creado correctamente.",
-            controller: controller
-        })
-    } catch (error) {
-        return res.status(400).json({
-            success: false,
-            message: 'no se pudo crear el capitulo'
-        })
-    }
-})
+
+let router = express.Router()
+
+
+const { create } = chapterCreate
+router.get('/', function (req, res, next) {
+    res.send('chapters here');
+});
+
+router.post('/', passport.authenticate('jwt', { session: false }), is_active, is_property_of, validator(postschema), existsOrder, nextOrder, addFrontPhoto, create)
 
 export default router
+
