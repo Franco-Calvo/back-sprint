@@ -1,16 +1,13 @@
 import Chapter from '../../models/Chapter.js'
 
 async function nextOrder(req, res, next) {
+    if (req.body.order) { return next() }
     if (!req.body.order) {
-        let chapter = await Chapter.find({ manga_id: req.body.manga_id }).sort("-order")
-        chapter = chapter[0]
-        req.body.order = chapter.order + 1
+        const chapter = await Chapter.findOne({ manga_id: req.body.manga_id }).sort("-order")
+        req.body.order = chapter ? chapter.order + 1 : 1
+        return next()
     }
-
-    next()
-}
-
-export default nextOrder
+} export default nextOrder
 
 
 

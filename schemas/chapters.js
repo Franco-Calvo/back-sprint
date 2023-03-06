@@ -12,7 +12,7 @@ const schema = Joi.object({
             'string.required': 'the title is required',
         }),
     order: Joi
-        .any(),
+        .number(),
     pages: Joi
         .string().uri()
         .required()
@@ -22,9 +22,9 @@ const schema = Joi.object({
             'string.empty': 'the pages cannot be empty'
         }),
 
-    // manga_id: Joi
-    //     .ObjectId()
-    //     .required(),
+    manga_id: Joi
+        .string()
+        .required(),
 })
 
 export default schema

@@ -18,7 +18,6 @@ router.get('/', function (req, res, next) {
     res.send('chapters here');
 })
 
-router.post('/', validator(postschema), existsOrder, nextOrder, addFrontPhoto, create)
+router.post('/', passport.authenticate('jwt', { session: false }), is_active, validator(postschema), is_property_of, existsOrder, nextOrder, addFrontPhoto, create)
 
 export default router
-// passport.authenticate('jwt', { session: false }), is_active, is_property_of,
