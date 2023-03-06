@@ -38,7 +38,8 @@ const controller = {
       return res.status(200).json({
         succes: true,
         message: "Logged in user!",
-        token: token,
+        user,
+        token
       });
     } catch (error) {
       next(error);
