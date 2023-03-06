@@ -8,6 +8,6 @@ import passport from '../middleware/passport.js'
 const { create } = controller
 let router = express.Router();
 
-router.post("/authors",passport.authenticate('jwt',{session:false}),validator(schema),create );
+router.post("/",passport.authenticate('jwt',{session:false}),validator(schema), create );
 
 export default router;
