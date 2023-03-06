@@ -10,10 +10,6 @@ let router = express.Router();
 router.post(
   "/",
   passport.authenticate("jwt", {session: false}),
-  (req, res, next) => {
-    req.body.user_id = req.user._id;
-    next();
-  },
   validator(schema),
   create
 );
