@@ -5,9 +5,10 @@ const schema = Joi.object({
         .string()
         .required()
         .min(4)
+        .max(30)
         .messages({
             'string.min': 'the title must be at least 4 characteres',
-            'string.empty': 'the title cannot be empty',
+            'string.max': 'the title must not have more than 30 characters',
             'string.required': 'the title is required',
         }),
     order: Joi
@@ -21,6 +22,9 @@ const schema = Joi.object({
             'string.empty': 'the pages cannot be empty'
         }),
 
+    // manga_id: Joi
+    //     .ObjectId()
+    //     .required(),
 })
 
 export default schema

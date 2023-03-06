@@ -1,20 +1,19 @@
 import Chapter from '../../models/Chapter.js'
 
 async function existsOrder(req, res, next) {
-    if (req.body.order) {
-        const chapter = await Chapter.findOne({ manga_id: req.body.manga_id, order: req.body.order })
+    req.body.manga_id = '63ffafade652fa554fe009eb'
 
-        if (chapter) {
-            return res.status(400).json({
-                success: false,
-                message: 'chapther cannot by create',
+    const chapter = await Chapter.findOne({ manga_id: req.body.manga_id, order: req.body.order })
 
-            })
-        }
+    if (!chapter) {
+        return next()
     }
-
-    return next()
-
+    if (chapter) {
+        return res.status(400).json({
+            success: false,
+            message: 'the order already exists'
+        })
+    }
 }
 
 export default existsOrder
