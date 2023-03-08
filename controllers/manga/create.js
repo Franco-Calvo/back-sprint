@@ -3,8 +3,6 @@ import Manga from "../../models/Manga.js";
 const createManga = {
         create: async (req, res) => {
                 try {
-                        req.body.author_id = "63fe8112f09373806fd89fe5"
-
                         let manga = await Manga.create(req.body);
                         return res.status(201).json({
                                 success: true,
