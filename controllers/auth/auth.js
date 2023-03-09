@@ -31,6 +31,7 @@ const controller = {
         { new: true } //para que devuelva el objeto modificado
       );
       user.password = null; //ProtegerContraseña
+      
 
       const token = jsonwebtoken.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 7,

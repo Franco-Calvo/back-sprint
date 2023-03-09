@@ -12,5 +12,5 @@ const { create } = mangaCreate
 const { all } = allController
 
 router.post("/", passport.authenticate('jwt',{session:false}),is_active , validator(mangaSchema),exist_title, create);
-router.get('/',all)
+router.get('/', all)
 export default router
