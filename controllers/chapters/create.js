@@ -1,20 +1,26 @@
-import Chapter from '../../models/Chapter.js'
+import Chapter from "../../models/Chapter.js";
 
-const chapterCreate = {
-    create: async (req, res, next) => {
+const controller = {
+    create: async (req, res) => {
         try {
-            const chapter = await Chapter.create(req.body)
-            res.status(201).json({
+
+            req.body.manga_id = '63ffafade652fa554fe009eb';
+            let chapter = await Chapter.create(req.body);
+            return res.status(201).json({
                 success: true,
-                response: chapter,
-            })
+                message: "capitulo creado correctamente.",
+                chapter: chapter,
+            });
+
         } catch (error) {
-            next(error)
+            return res.status(400).json({
+                success: false,
+                message: 'no se pudo crear el capitulo'
+            })
         }
-    }
+    },
+};
 
-}
-
-export default chapterCreate
+export default controller;
 
 
