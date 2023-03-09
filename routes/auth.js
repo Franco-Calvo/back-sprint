@@ -27,7 +27,11 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   sign_out
 );
-router.post("/signintoken",passport.authenticate("jwt", {session: false}),sign_in_token)
+router.post(
+  "/signintoken",
+  passport.authenticate("jwt", { session: false }),
+  sign_in_token
+);
 
 // module.exports = router;
 export default router;
