@@ -19,11 +19,8 @@ const schema = Joi.object({
     invalid: "Not a date",
     "date.less": "The date is greater than the current date",
   }),
-  photo: Joi.string().required().min(8).messages({
-    "string.min": "The photo url must have at least 8 characters",
-  }),
-  active: Joi.boolean().required().messages({
-    invalid: "Not a Boolean",
+  photo: Joi.string().uri().required().messages({
+    invalid: "The photo url is not correct",
   }),
 });
 
