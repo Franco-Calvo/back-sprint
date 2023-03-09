@@ -22,7 +22,7 @@ const controller = {
                 .limit(pagination.limit > 0 ? pagination.limit : 0)
             return res
                 .status(200)
-                .json({ chapter: chapter, count })
+                .json({ chapter: chapter})
         }
         catch (error) {
             next(error)
