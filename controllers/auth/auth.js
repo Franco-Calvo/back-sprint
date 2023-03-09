@@ -1,4 +1,4 @@
-import User from "./../../models/User.js";
+import User from "../../models/User.js";
 import Crypto from "crypto";
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
@@ -31,7 +31,6 @@ const controller = {
         { new: true } //para que devuelva el objeto modificado
       );
       user.password = null; //ProtegerContraseña
-      
 
       const token = jsonwebtoken.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 24 * 7,
@@ -40,7 +39,7 @@ const controller = {
         succes: true,
         message: "Logged in user!",
         user,
-        token
+        token,
       });
     } catch (error) {
       next(error);
@@ -73,8 +72,8 @@ const controller = {
         { is_online: true }, //parámetro a modificar
         { new: true } //para que devuelva el objeto modificado
       );
-      const token = res.token
-      user.password = null
+      const token = res.token;
+      user.password = null;
       return res.status(200).json({
         succes: true,
         message: "Logged in user!",
