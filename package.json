@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "data_users": "node ./models/data/users",
-    "data_categories":"node ./models/data/categories"
+    "data_categories":"node ./models/data/categories",
+    "data": "node ./models/data/data"
   },
   "type": "module",
   "dependencies": {
