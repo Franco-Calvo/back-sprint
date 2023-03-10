@@ -4,10 +4,9 @@ import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
 
-
 let router = express.Router();
 
- function authorIsActive(req, res, next) {
+function authorIsActive(req, res, next) {
   //Esto viene de passport
   req.user = {
     is_author: true,
@@ -35,7 +34,7 @@ let router = express.Router();
       message: "Bad request",
     });
   }
-} 
+}
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -48,6 +47,5 @@ router.use("/auth", userRouter);
 router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
-
 
 export default router;
