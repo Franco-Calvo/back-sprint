@@ -7,7 +7,8 @@
     "dev": "nodemon ./bin/www",
     "data_users": "node ./models/data/users",
     "data_categories":"node ./models/data/categories",
-    "data": "node ./models/data/data"
+    "data": "node ./models/data/data",
+    "data_uss": "node ./models/User"
   },
   "type": "module",
   "dependencies": {
