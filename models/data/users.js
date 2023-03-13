@@ -54,7 +54,7 @@ export let users = [
     is_verified: true,
     verify_code: "acvnewi92emodsqisj129mxskal2121wsaz",
     is_online: false,
-    ephoto:
+    photo:
       "https://i.postimg.cc/7Yj2FytQ/43cc80b4c098e43a988c535eaba42c53-icono-de-usuario-de-persona.png",
   },
   {
