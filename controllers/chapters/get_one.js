@@ -1,11 +1,12 @@
 import Chapter from "../../models/Chapter.js";
 
-const getController = {
-    get_one: async (req, res) => {
+const controller = {
+    get_one: async (req, res, next) => {
         try {
-            const one = await Chapter.findOne({ _id: req.params.id }).select("pages _id").sort({ pageNumber: 1 });
+            const one = await Chapter.findOne({ _id: req.params.id }).select("title order pages _id");
+            console.log(one)
             if (one) {
-                return res.status(200).json({ Chapter: one })
+                return res.status(200).json({ chapter: one });
             } else {
                 return res.status(400).json({
                     success: false,
@@ -18,9 +19,10 @@ const getController = {
                 success: false,
                 message: 'Internal server error'
             });
+
         }
     }
-}
-export default getController;
+};
 
+export default controller;
 
