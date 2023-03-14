@@ -29,6 +29,7 @@ const controller = {
         success: true,
         new: mangaNew,
         old: mangaOld,
+        count: count,
       });
     } catch {
       next(err);
