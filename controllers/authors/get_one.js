@@ -11,7 +11,7 @@ const controller = {
         data: author,
       });
     } else {
-      return res.status(400).json({
+      return res.status(404).json({
         success: false,
         message: "This author dont exist already!",
       });

@@ -32,7 +32,10 @@ const controller = {
         count: count,
       });
     } catch {
-      next(err);
+      return res.status(404).json({
+        success: false,
+        message: "This author has not mangas!",
+      });
     }
   },
 };
