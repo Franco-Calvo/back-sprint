@@ -4,7 +4,7 @@ const controller = {
     create: async (req, res) => {
         try {
 
-            req.body.manga_id = '63ffafade652fa554fe009eb';
+            // req.body.manga_id = '63ffafade652fa554fe009eb';
             let chapter = await Chapter.create(req.body);
             return res.status(201).json({
                 success: true,
