@@ -38,7 +38,7 @@ function authorIsActive(req, res, next) {
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", {title: "Express"});
+  res.render("index", { title: "Express" });
 });
 
 //rutas de todos los recursos
@@ -47,5 +47,6 @@ router.use("/auth", userRouter);
 router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
+// router.use("/categories", categories);
 
 export default router;
