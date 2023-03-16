@@ -5,13 +5,13 @@ import schema from "../schemas/authors.js";
 import validator from "../middleware/validator.js";
 import passport from "../middleware/passport.js";
 
-const {create} = createController;
-const {get_one} = getOneController;
+const { create } = createController;
+const { get_one } = getOneController;
 let router = express.Router();
 
 router.post(
   "/",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   validator(schema),
   create
 );
