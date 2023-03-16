@@ -11,24 +11,16 @@ const controller = {
         if (req.query.manga_id) {
             chapters.manga_id = req.query.manga_id
         }
-        if (req.query.page) { 
+        if (req.query.page) {
             pagination.page = req.query.page
         }
         try {
             let chapter = await Chapter.find(chapters)
-<<<<<<< HEAD
-                .select('title order  -_id')
+                .select('title order pages _id')
                 .populate({
                     path: 'manga_id',
                     select: 'cover_photo -_id'
                 })
-=======
-            .select('title order pages _id')
-            .populate({
-                path: 'manga_id',
-                select: 'cover_photo -_id'
-            })
->>>>>>> 8370e096aff322688447ab75bd7e1ee2cf6939b5
                 .sort({ order: 1 })
                 .skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
                 .limit(pagination.limit > 0 ? pagination.limit : 0)
