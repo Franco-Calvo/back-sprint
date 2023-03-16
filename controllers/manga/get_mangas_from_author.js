@@ -2,7 +2,7 @@ import Manga from "../../models/Manga.js";
 
 const controller = {
   get_mangas_from_author: async (req, res) => {
-    let count = await Manga.countDocuments({author_id: req.params.id});
+    let count = await Manga.countDocuments({ author_id: req.params.id });
     let pagination = {
       page: 1,
       limit: 4,
@@ -11,16 +11,16 @@ const controller = {
       pagination.limit = count / 2;
     }
     try {
-      let mangaNew = await Manga.find({author_id: req.params.id})
+      let mangaNew = await Manga.find({ author_id: req.params.id })
         .select("title description cover_photo")
-        .sort({createdAt: -1})
+        .sort({ createdAt: -1 })
         .skip(
           pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0
         )
         .limit(pagination.limit > 0 ? pagination.limit : 0);
-      let mangaOld = await Manga.find({author_id: req.params.id})
+      let mangaOld = await Manga.find({ author_id: req.params.id })
         .select("title description cover_photo")
-        .sort({createdAt: 1})
+        .sort({ createdAt: 1 })
         .skip(
           pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0
         )
