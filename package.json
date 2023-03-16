@@ -8,7 +8,8 @@
     "data_users": "node ./models/data/users",
     "data_categories": "node ./models/data/categories",
     "data": "node ./models/data/data",
-    "data_uss": "node ./models/User"
+    "data_uss": "node ./models/User",
+    "test_mangas": "mocha ./test/index.test.js" 
   },
   "type": "module",
   "dependencies": {
@@ -31,6 +32,9 @@
     "passport-jwt": "^4.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   }
 }
