@@ -2,7 +2,6 @@ import Manga from "../../models/Manga.js";
 
 const controller = {
   allget: async (req, res, next) => {
-    
     let consultas = {};
 
     let pagination = {
