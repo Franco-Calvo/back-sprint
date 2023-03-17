@@ -16,4 +16,5 @@ router.post("/",passport.authenticate("jwt", { session: false }),validator(schem
 
 router.get("/:id", get_one);
 
+
 export default router;
