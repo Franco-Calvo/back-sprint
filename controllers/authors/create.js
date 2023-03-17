@@ -5,6 +5,7 @@ const controller = {
     try {
       console.log(req.body.user_id);
       req.body.user_id = req.user._id;
+      req.body.active = true;
       let author = await Author.create(req.body);
       return res.json({
         succes: true,
