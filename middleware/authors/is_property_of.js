@@ -10,7 +10,6 @@ async function is_property_of(req, res, next) {
     _id: req.params.id,
     author_id: author._id,
   });
-  console.log(manga);
   if (manga) {
     return next();
   }
