@@ -14,13 +14,14 @@ const controller = {
       } else {
         return res.status(404).json({
           success: false,
+          data: author,
           message: "This author dont exist already!",
         });
       }
     } catch (error) {
-      return res.status(404).json({
+      return res.status(400).json({
         success: false,
-        message: "This author dont exist already!",
+        message: error.message,
       });
     }
   },
