@@ -19,9 +19,6 @@ const editschema = Joi.object({
   _id: Joi.string().required().messages({
     invalid: "The id is invalid",
   }),
-  manga_id: Joi.string().required().messages({
-    invalid: "The author id is invalid",
-  }),
   title: Joi.string().min(4).messages({
     "string.min": "the title must be at least 4 characteres",
     "string.empty": "the title cannot be empty",
