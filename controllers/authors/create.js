@@ -4,6 +4,7 @@ const controller = {
   create: async (req, res) => {
     try {
       req.body.user_id = req.user._id;
+      req.body.active = true;
       let author = await Author.create(req.body);
       return res.status(201).json({
         succes: true,

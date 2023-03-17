@@ -17,7 +17,7 @@ const controller = {
         });
       }
     } catch (error) {
-      next(error);
+      console.log(error);
     }
   },
 };
