@@ -10,8 +10,6 @@ import find_id from "../middleware/auth/find_id.js";
 import is_active from "../middleware/authors/is_active.js";
 import schemaUpdate from "../schemas/update.js";
 
-
-
 const { create } = createController;
 const { get_one } = getOneController;
 const {me}=getMecontroller;
@@ -22,9 +20,6 @@ let router = express.Router();
 router.post("/",passport.authenticate("jwt", { session: false }),validator(schema),create);
 router.get("/me", passport.authenticate("jwt", { session:false }), find_id, me );
 router.put("/me", passport.authenticate("jwt", { session:false }),validator(schemaUpdate), find_id,is_active, update )
-
-
 router.get("/:id", get_one);
-
 
 export default router;
