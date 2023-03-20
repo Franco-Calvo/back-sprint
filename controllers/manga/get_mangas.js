@@ -2,7 +2,6 @@ import Manga from "../../models/Manga.js";
 
 const controller = {
   allget: async (req, res, next) => {
-    
     let consultas = {};
 
     let pagination = {
@@ -30,7 +29,13 @@ const controller = {
           pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0
         )
         .limit(pagination.limit > 0 ? pagination.limit : 0);
-      return res.status(200).json({ mangas: all });
+      if (all.length > 0) {
+        return res.status(200).json({
+          mangas: all,
+        });
+      } else {
+        return res.status(404).json({ message: "Mangas not found" });
+      }
     } catch (err) {
       next(err);
     }
