@@ -3,7 +3,7 @@ import userRouter from "./auth.js";
 import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
-
+import commentsRouter from './comments.js'
 let router = express.Router();
 
 function authorIsActive(req, res, next) {
@@ -47,6 +47,7 @@ router.use("/auth", userRouter);
 router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
+router.use("/comments", commentsRouter);
 // router.use("/categories", categories);
 
 export default router;
