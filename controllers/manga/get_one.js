@@ -20,5 +20,6 @@ const controller = {
       console.log(error);
     }
   },
-};
+}
+
 export default controller;
