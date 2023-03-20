@@ -22,4 +22,5 @@ router.get("/me", passport.authenticate("jwt", { session:false }), find_id, get_
 router.put("/me", passport.authenticate("jwt", { session:false }),validator(schemaUpdate), find_id,is_active, update )
 router.get("/:id", get_one);
 
+
 export default router;
