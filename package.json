@@ -9,7 +9,8 @@
     "data_categories": "node ./models/data/categories",
     "data": "node ./models/data/data",
     "data_uss": "node ./models/User",
-    "test_mangas": "mocha ./test/index.test.js" 
+    "test_mangas": "mocha ./test/index.test.js",
+    "test_a": "mocha ./test/author.test.js --timeout 7000"
   },
   "type": "module",
   "dependencies": {
@@ -25,6 +26,7 @@
     "joi": "^17.8.3",
     "joi-oid": "^1.1.2",
     "jsonwebtoken": "^9.0.0",
+    "mocha": "^10.2.0",
     "mongoose": "^6.9.3",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",

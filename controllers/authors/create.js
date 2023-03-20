@@ -6,6 +6,7 @@ const controller = {
     try {
       let user = await User.findOne({ _id: req.user._id });
       req.body.user_id = req.user._id;
+      req.body.active = true;
       let author = await Author.create(req.body);
       user.is_author = true;
       await user.save();
@@ -16,10 +17,9 @@ const controller = {
       });
     } catch (error) {
       console.log(error);
-      return res.json({
+      return res.status(400).json({
         succes: false,
-        error: error,
-        message: "Could not create author",
+        message: error.message,
       });
     }
   },
