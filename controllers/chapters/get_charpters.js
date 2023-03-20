@@ -1,4 +1,4 @@
-import Chapter from "../../models/Chapter.js"
+import Chapter from "../../models/Chapter.js";
 
 const controller = {
 
