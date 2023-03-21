@@ -20,10 +20,6 @@ const controller = {
       console.log(error);
     }
   },
-<<<<<<< HEAD
-};
-=======
 }
 
->>>>>>> 1e197d251afbcef1f14c5014afcaf281c5ba4743
 export default controller;
