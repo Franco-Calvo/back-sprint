@@ -4,7 +4,7 @@ const controller = {
   get_one: async (req, res) => {
     try {
       let author = await Author.findOne({_id: req.params.id}).select(
-        "name city country createdAt photo -_id"
+        "name city country createdAt photo"
       );
       if (author) {
         return res.status(200).json({
