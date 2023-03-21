@@ -14,23 +14,24 @@ import chapter_get_one from "../controllers/chapters/get_one.js";
 import chapter_readAll from "../controllers/chapters/read_all.js";
 import updateController from "../controllers/chapters/update.js";
 import deleteController from "../controllers/chapters/destroy.js";
+import new_is_property_of from "../middleware/chapters/new_is_property_of.js";
 
 let router = express.Router();
 
-const {schema, editschema} = postschema;
-const {destroy} = deleteController;
-const {update} = updateController;
-const {create} = chapterCreate;
-const {get_chapter} = getCharpters;
-const {read_all} = chapter_readAll;
-const {get_one} = chapter_get_one;
+const { schema, editschema } = postschema;
+const { destroy } = deleteController;
+const { update } = updateController;
+const { create } = chapterCreate;
+const { get_chapter } = getCharpters;
+const { read_all } = chapter_readAll;
+const { get_one } = chapter_get_one;
 
 router.post(
   "/",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(schema),
-  is_property_of,
+  new_is_property_of,
   existsOrder,
   nextOrder,
   addFrontPhoto,
@@ -43,7 +44,7 @@ router.get("/:id", get_one);
 
 router.put(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(editschema),
   find_id,
@@ -53,7 +54,7 @@ router.put(
 
 router.delete(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(editschema),
   find_id,
