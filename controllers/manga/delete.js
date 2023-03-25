@@ -1,13 +1,16 @@
 import Manga from "../../models/Manga.js";
+import Chapter from "../../models/Chapter.js";
 
 const controller = {
   deleteC: async (req, res, next) => {
     try {
       const { id } = req.params;
       let dst = await Manga.deleteOne({ _id: id });
-      console.log(dst);
+      let dstChapter = await Chapter.deleteMany({ manga_id: id });
+      console.log(dstChapter);
       return res.status(200).json({
         dst,
+        dstChapter,
       });
     } catch (error) {
       next(error);

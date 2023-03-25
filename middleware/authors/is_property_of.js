@@ -7,10 +7,9 @@ async function is_property_of(req, res, next) {
     user_id: req.user._id,
   });
   const manga = await Manga.findOne({
-    _id: req.params.id,
+    _id: req.body.manga_id,
     author_id: author._id,
   });
-  console.log(manga)
   if (manga) {
     return next();
   }
