@@ -1,19 +1,19 @@
-import Author from "../../models/Author.js";
+/* import Company from "../../models/Company.js";
 import createError from "http-errors"
 
 const controller = {
     update: async(req,res,next) => {
         try{
-            let author = await Author.findOneAndUpdate({ user_id: req.user }, req.body, { new: true })
-            .select("name city country date photo ")
+            let company = await Company.findOneAndUpdate({ user_id: req.user }, req.body, { new: true })
+            .select("name website logo ")
            
-            if(author){
+            if(company){
                 return res.status(200).json({
                     success: true,
-                    author
+                    company
                 })
             }
-            return next ( createError(404, "no es author" ))
+            return next ( createError(404, "no es company" ))
         }catch(error){
             return res.status(500).json({
                 success: false,
@@ -24,4 +24,4 @@ const controller = {
 }
 
 
-export default controller
+export default controller */
