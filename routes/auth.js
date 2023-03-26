@@ -9,7 +9,7 @@ import passwordIsOk from "../middleware/passwordIsOk.js";
 import passport from "../middleware/passport.js";
 import schema_signin from "../schemas/signin.js";
 
-const { sign_up, sign_in, sign_out, sign_in_token } = controller;
+const { sign_up, sign_in, sign_out, sign_in_token, verifyCode } = controller;
 
 let router = express.Router();
 
@@ -32,6 +32,8 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   sign_in_token
 );
+
+router.get('/verify/:verify_code', verifyCode)
 
 // module.exports = router;
 export default router;

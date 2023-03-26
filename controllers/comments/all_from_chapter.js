@@ -6,12 +6,10 @@ const controller = {
 
     all_from_chapter: async (req, res, next) => {
 
-
         let pagination = {
             page: 1,
             limit: 4,
         };
-
 
         if (req.query.page) {
             pagination.page = req.query.page;
@@ -23,18 +21,14 @@ const controller = {
         try {
 
             let comments = await Comment.find({ chapter_id: req.query.chapter_id }).select('text user_id').populate('user_id', 'name photo ')
-                .skip(
-                    pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0
-                ).limit(pagination.limit > 0 ? pagination.limit : 0);
+                .skip(pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0)
+                .limit(pagination.limit > 0 ? pagination.limit : 0);
             if (comments) {
                 return res.status(200).json({
                     success: true,
                     comments
                 })
             }
-            console.log(timestamps)
-
-
 
         } catch (error) {
             next(error)
