@@ -11,6 +11,7 @@
     "data_uss": "node ./models/User",
     "test_mangas": "mocha ./test/index.test.js",
     "test_a": "mocha ./test/author.test.js --timeout 7000",
+    "mangas_run": "node ./models/data/mangas_v1.js",
     "test_chapters": "mocha ./test/t-03/t-03.test.js "
   },
   "type": "module",
@@ -27,6 +28,8 @@
     "joi": "^17.8.3",
     "joi-oid": "^1.1.2",
     "jsonwebtoken": "^9.0.0",
+    "mercadopago": "^1.5.15",
+    "mocha": "^10.2.0",
     "mongoose": "^6.9.3",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",

@@ -7,11 +7,11 @@ const controller = {
       const { id } = req.params;
       let dst = await Manga.deleteOne({ _id: id });
       let dstChapter = await Chapter.deleteMany({ manga_id: id });
-      console.log(dstChapter);
+      console.log(dst)
       return res.status(200).json({
         dst,
         dstChapter,
-      });
+      }); //Corregir status
     } catch (error) {
       next(error);
     }
