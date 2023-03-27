@@ -34,7 +34,7 @@ const controller = {
       res.json(mangas);
     } catch (error) {
       console.log(error.message);
-      res.status(500).json({
+      res.status(500).json({ //Manejo de error
         success: false,
         message: error.message,
       });
