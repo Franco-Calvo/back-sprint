@@ -26,9 +26,7 @@ const editschema = Joi.object({
   }),
   order: Joi.any(),
   pages: Joi
-    // .string().uri()
     .array().items(Joi.string().uri())
-    .required()
     .min(1)
     .message({
       'any.required': 'pages have to be URL',
