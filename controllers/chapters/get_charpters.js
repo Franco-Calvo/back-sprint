@@ -26,7 +26,7 @@ const controller = {
           pagination.page > 0 ? (pagination.page - 1) * pagination.limit : 0
         )
         .limit(pagination.limit > 0 ? pagination.limit : 0);
-      return res.status(200).json({chapter: chapter, allChapter:allChapter});
+      return res.status(200).json({chapter: chapter, allChapter: allChapter});
     } catch (error) {
       next(error);
     }
