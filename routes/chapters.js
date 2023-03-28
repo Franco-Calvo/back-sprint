@@ -15,6 +15,7 @@ import chapter_get_one from "../controllers/chapters/get_one.js";
 import chapter_readAll from "../controllers/chapters/read_all.js";
 import updateController from "../controllers/chapters/update.js";
 import deleteController from "../controllers/chapters/destroy.js";
+import new_is_property_of from "../middleware/chapters/new_is_property_of.js";
 
 let router = express.Router();
 
@@ -31,7 +32,7 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   is_active,
   validator(schema),
-  is_property_of,
+  new_is_property_of,
   existsOrder,
   nextOrder,
   addFrontPhoto,

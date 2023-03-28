@@ -10,6 +10,7 @@ const createManga = {
       return res.status(201).json({
         success: true,
         message: "New Manga created succesfully",
+        manga,
       });
     } catch (err) {
       console.log(err);
