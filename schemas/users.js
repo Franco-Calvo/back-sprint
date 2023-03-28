@@ -6,15 +6,15 @@ const schema = Joi.object({
     "string.max": "The name must have a maximum of 20 characters",
   }),
   email: Joi.string()
-
-    .min(8) 
+    .required()
+    .min(8)
     .email({ minDomainSegments: 2 })
     .messages({
       invalid: "Not an object",
     }),
   photo: Joi.string()
     .uri()
-   
+
     .min(8)
     .messages({
       "string.required": "Photo required",
