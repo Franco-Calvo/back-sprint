@@ -1,25 +1,29 @@
-import  Company  from '../../models/Company.js'
+import  Author  from "../../models/Author.js";
 import  User  from '../../models/User.js'
 import createError from "http-errors";
+
 
 
 const controller = {
     update_active: async (req, res, next) => {
         try {
-            let company = await Company.findOneAndUpdate(
+           
+            let author = await Author.findOneAndUpdate(
                 { _id: req.params.id },
                 { active: req.body.active },
-                { new: true },
+                { new: true }
             )
-            if (company) {
+            console.log(author)
+            if (author) {
                 let user = await User.findOneAndUpdate(
-                    { _id: company.user_id },
-                    { is_company: req.body.active },
+                    
+                    { _id: author.user_id },
+                    { is_author: req.body.active },
                     { new: true }
                 )
                 return res.status(200).json({
                     success: true,
-                    company,
+                    author,
                 })
             } else {
                 return res.status(404).json({
@@ -31,5 +35,6 @@ const controller = {
         }
     }
 }
+
 
 export default controller;

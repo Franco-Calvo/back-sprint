@@ -11,11 +11,8 @@
     "data_uss": "node ./models/User",
     "test_mangas": "mocha ./test/index.test.js",
     "test_a": "mocha ./test/author.test.js --timeout 7000",
-<<<<<<< HEAD
-    "test-t2": "mocha ./test/manga.test.js --timeout 5000"
-=======
+    "test-t2": "mocha ./test/manga.test.js --timeout 5000",
     "test_chapters": "mocha ./test/t-03/t-03.test.js "
->>>>>>> 9e34a2907dd14483f842cbbccaaf6813d63daaf6
   },
   "type": "module",
   "dependencies": {
