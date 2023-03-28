@@ -4,7 +4,7 @@ import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
 import commentsRouter from "./comments.js";
-//import paymentRouter from "./payment.js";
+import paymentRouter from "./payment.js";
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
 router.use("/comments", commentsRouter);
-//router.use("/payment", paymentRouter);
+router.use("/payment", paymentRouter);
 // router.use("/categories", categories);
 
 export default router;
