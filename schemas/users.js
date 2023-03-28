@@ -24,10 +24,10 @@ const schema = Joi.object({
     "string.min": "Password must be at least 8 characters",
     "string.max": "The password must have a maximum of 50 characters",
   }),
-  is_author: Joi.boolean().required().messages({
+  is_author: Joi.boolean().messages({
     invalid: "Not a Boolean",
   }),
-  is_company: Joi.boolean().required().messages({
+  is_company: Joi.boolean().messages({
     invalid: "Not a Boolean",
   }),
 });

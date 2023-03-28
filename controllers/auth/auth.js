@@ -134,6 +134,20 @@ const controller = {
       next(error);
     }
   },
+  get_user: async (req, res, next) => {
+    try {
+      let user = await User.findOne(
+        { email: req.user.email }
+      );
+      user.password = null;
+      return res.status(200).json({
+        succes: true,
+        data: user,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 export default controller;

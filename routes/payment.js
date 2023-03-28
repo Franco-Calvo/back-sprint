@@ -4,7 +4,7 @@ import cors from "cors";
 
 let router = express.Router();
 
-mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
+mercadopago.configure({access_token: process.env.MERCADOPAGO_KEY});
 
 router.post("/", cors(), (req, res) => {
   const button = req.body;
@@ -29,8 +29,8 @@ router.post("/", cors(), (req, res) => {
   };
   mercadopago.preferences
     .create(preference)
-    .then((response) => res.status(200).json({ response }))
-    .catch((error) => res.status(400).json({ error: error.message }));
+    .then((response) => res.status(200).json({response}))
+    .catch((error) => res.status(400).json({error: error.message}));
 });
 
 export default router;

@@ -9,7 +9,7 @@ import passwordIsOk from "../middleware/passwordIsOk.js";
 import passport from "../middleware/passport.js";
 import schema_signin from "../schemas/signin.js";
 
-const { sign_up, sign_in, sign_out, sign_in_token, verifyCode } = controller;
+const { sign_up, sign_in, sign_out, sign_in_token, verifyCode , get_user} = controller;
 
 let router = express.Router();
 
@@ -31,6 +31,11 @@ router.post(
   "/signintoken",
   passport.authenticate("jwt", { session: false }),
   sign_in_token
+);
+router.get(
+  "/user",
+  passport.authenticate("jwt", { session: false }),
+  get_user
 );
 
 router.get('/verify/:verify_code', verifyCode)
