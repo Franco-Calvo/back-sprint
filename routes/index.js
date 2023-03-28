@@ -3,6 +3,8 @@ import userRouter from "./auth.js";
 import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
+import commentsRouter from './comments.js';
+import companyRouter from './companies.js'
 import commentsRouter from "./comments.js";
 import paymentRouter from "./payment.js";
 
@@ -20,6 +22,7 @@ router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
 router.use("/comments", commentsRouter);
+router.use("/companies", companyRouter)
 router.use("/payment", paymentRouter);
 // router.use("/categories", categories);
 
