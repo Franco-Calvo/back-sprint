@@ -8,10 +8,7 @@ import addFrontPhoto from "../middleware/chapters/add_front_photo.js";
 import existsOrder from "../middleware/chapters/exists_order.js";
 import is_active from "../middleware/authors/is_active.js";
 import is_property_of from "../middleware/authors/is_property_of.js";
-<<<<<<< HEAD
-=======
 import is_property_of_chapter from "../middleware/chapters/is_property_of_chapter.js";
->>>>>>> d61d0c9dac88ca38ab9c9e764d1514b2fdd05431
 import find_id from "../middleware/auth/find_id.js";
 import getCharpters from "../controllers/chapters/get_charpters.js";
 import chapter_get_one from "../controllers/chapters/get_one.js";
