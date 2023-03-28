@@ -25,12 +25,17 @@ const editschema = Joi.object({
     "string.required": "the title is required",
   }),
   order: Joi.any(),
-  pages: Joi.array().items(Joi.string().uri()).min(1).messages({
-    "any.required": "the pages have to be url",
-    "string.empty": "the pages cannot be empty",
-  }),
+  pages: Joi
+    // .string().uri()
+    .array().items(Joi.string().uri())
+    .required()
+    .min(1)
+    .message({
+      'any.required': 'pages have to be URL',
+      'string.empty': 'pages cannot be empty'
+    }),
 });
 
-const schemas = {schema, editschema};
+const schemas = { schema, editschema };
 
 export default schemas;

@@ -7,7 +7,7 @@ const schema = Joi.object({
   }),
   email: Joi.string()
     .required()
-    .min(8) 
+    .min(8)
     .email({ minDomainSegments: 2 })
     .messages({
       invalid: "Not an object",
