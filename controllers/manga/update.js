@@ -10,6 +10,8 @@ const controller = {
       );
       console.log(upd);
       return res.status(200).json({
+        success: true,
+        message: "Updated!",
         upd,
       });
     } catch (error) {
