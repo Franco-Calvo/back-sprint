@@ -31,7 +31,7 @@ const controller = {
         text: "Validate your user by clicking on the following link",
         html: `<p><br>Welcome to Minga Project ${user.name} <br>
              <br> Discover a manga, have fun and enjoy <br> 
-             Press the following link to validate your user: <a href="http://localhost:3000/verify-account/${user.verify_code}">Click here</a></p> 
+             Press the following link to validate your user: <a href="https://minga-0gy1.onrender.com/verify-account/${user.verify_code}">Click here</a></p> 
              <p style="color: grey;">--<br>
              Kind regards,<br>
              Minga's team<br>
