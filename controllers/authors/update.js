@@ -15,7 +15,7 @@ const controller = {
             }
             return next ( createError(404, "no es author" ))
         }catch(error){
-            return res.status(400).json({
+            return res.status(500).json({
                 success: false,
                 message: "Server error"
             })

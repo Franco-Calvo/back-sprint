@@ -2,7 +2,6 @@ import Manga from "../../models/Manga.js";
 import Author from "../../models/Author.js";
 
 async function is_property_of(req, res, next) {
-  req.body.manga_id === undefined ? (req.body.manga_id = req.params.id) : null;
   const author = await Author.findOne({
     user_id: req.user._id,
   });
@@ -10,6 +9,7 @@ async function is_property_of(req, res, next) {
     _id: req.body.manga_id,
     author_id: author._id,
   });
+  console.log(manga)
   if (manga) {
     return next();
   }
