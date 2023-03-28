@@ -18,17 +18,17 @@ import deleteController from "../controllers/chapters/destroy.js";
 
 let router = express.Router();
 
-const {schema, editschema} = postschema;
-const {destroy} = deleteController;
-const {update} = updateController;
-const {create} = chapterCreate;
-const {get_chapter} = getCharpters;
-const {read_all} = chapter_readAll;
-const {get_one} = chapter_get_one;
+const { schema, editschema } = postschema;
+const { destroy } = deleteController;
+const { update } = updateController;
+const { create } = chapterCreate;
+const { get_chapter } = getCharpters;
+const { read_all } = chapter_readAll;
+const { get_one } = chapter_get_one;
 
 router.post(
   "/",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(schema),
   is_property_of,
@@ -44,7 +44,7 @@ router.get("/:id", get_one);
 
 router.put(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(editschema),
   find_id,
@@ -54,7 +54,7 @@ router.put(
 
 router.delete(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   find_id,
   is_property_of_chapter,

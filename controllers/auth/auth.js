@@ -2,24 +2,76 @@ import User from "../../models/User.js";
 import Crypto from "crypto";
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
+import transporter from "../../config/verificationMail.js"
+import { clearScreenDown } from "readline";
 
 const controller = {
   sign_up: async (req, res, next) => {
-    req.body.is_online = false;
-    req.body.is_admin = false;
-    req.body.is_author = false;
-    req.body.is_company = false;
-    req.body.is_verified = true;
-    req.body.verify_code = Crypto.randomBytes(10).toString("hex");
-    req.body.password = bcryptjs.hashSync(req.body.password, 10);
+    const user = {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      photo: req.body.photo,
+      is_online: false,
+      is_admin: false,
+      is_author: false,
+      is_company: false,
+      is_verified: false,
+      verify_code: Crypto.randomBytes(10).toString("hex"),
+      password: bcryptjs.hashSync(req.body.password, 10),
+    }
     try {
-      await User.create(req.body);
-      return res.status(200).json({
-        succes: true,
-        message: "User registered!",
-      });
+      await User.create(user)
+
+
+      const message = {
+        from: process.env.EMAIL_MAILING,
+        to: user.email,
+        subject: "User Validation",
+        text: "Validate your user by clicking on the following link",
+        html: `<p><br>Welcome to Minga Project ${user.name} <br>
+             <br> Discover a manga, have fun and enjoy <br> 
+             Press the following link to validate your user: <a href="http://localhost:3000/verify-account/${user.verify_code}">Click here</a></p> 
+             <p style="color: grey;">--<br>
+             Kind regards,<br>
+             Minga's team<br>
+             mingaproject2023@gmail.com<br>
+             www.minga.com.ar<br>
+             <br>
+             Thanks for using our app! If you have any questions or suggestions, please do not hesitate to contact us.<br>
+             <br>
+             Minga Project</p>`
+      }
+
+      await transporter.sendMail(message)
+
+      req.body.success = true
+      req.body.sc = 201
+      req.body.data = 'User created'
+      return res.status(200).json({ message: "User registered!" });
+
     } catch (error) {
-      next(error);
+      next(error)
+    }
+  },
+
+  verifyCode: async (req, res, next) => {
+    const { verify_code } = req.params
+    try {
+      const user = await User.find({ verify_code: verify_code });
+      if (user.length > 0) {
+        const userId = user[0]._id;
+        await User.findOneAndUpdate(
+          { _id: userId },
+          { is_verified: true },
+          { new: true }
+        )
+        return res.status(200).json({ message: "User successfully verified!!!" });
+      } else {
+        return res.status(400).json({ message: "Failed to verify user!!!" });
+      }
+    } catch (error) {
+      next(error)
     }
   },
 
