@@ -1,12 +1,11 @@
 import manga from "../../models/Manga.js";
 
-
 const controller = {
   get_me: async (req, res) => {
     let mymangas = {};
     let pagination = {
       page: 1,
-      limit: 6,
+      limit: 5,
     };
 
     if (req.query.title) {
@@ -23,7 +22,7 @@ const controller = {
     }
     try {
       const { author_id } = req.body;
-      mymangas.author_id = author_id
+      mymangas.author_id = author_id;
       const mangas = await manga
         .find(mymangas)
         .select("title category_id cover_photo _id")
@@ -35,7 +34,10 @@ const controller = {
       res.json(mangas);
     } catch (error) {
       console.log(error.message);
-      res.status(500).send("Ocurrió un error");
+      res.status(500).json({ //Manejo de error
+        success: false,
+        message: error.message,
+      });
     }
   },
 };
