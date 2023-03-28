@@ -8,6 +8,10 @@ import addFrontPhoto from "../middleware/chapters/add_front_photo.js";
 import existsOrder from "../middleware/chapters/exists_order.js";
 import is_active from "../middleware/authors/is_active.js";
 import is_property_of from "../middleware/authors/is_property_of.js";
+<<<<<<< HEAD
+=======
+import is_property_of_chapter from "../middleware/chapters/is_property_of_chapter.js";
+>>>>>>> d61d0c9dac88ca38ab9c9e764d1514b2fdd05431
 import find_id from "../middleware/auth/find_id.js";
 import getCharpters from "../controllers/chapters/get_charpters.js";
 import chapter_get_one from "../controllers/chapters/get_one.js";
@@ -17,17 +21,17 @@ import deleteController from "../controllers/chapters/destroy.js";
 
 let router = express.Router();
 
-const {schema, editschema} = postschema;
-const {destroy} = deleteController;
-const {update} = updateController;
-const {create} = chapterCreate;
-const {get_chapter} = getCharpters;
-const {read_all} = chapter_readAll;
-const {get_one} = chapter_get_one;
+const { schema, editschema } = postschema;
+const { destroy } = deleteController;
+const { update } = updateController;
+const { create } = chapterCreate;
+const { get_chapter } = getCharpters;
+const { read_all } = chapter_readAll;
+const { get_one } = chapter_get_one;
 
 router.post(
   "/",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(schema),
   is_property_of,
@@ -43,7 +47,7 @@ router.get("/:id", get_one);
 
 router.put(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
   validator(editschema),
   find_id,
@@ -53,11 +57,10 @@ router.put(
 
 router.delete(
   "/:id",
-  passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", { session: false }),
   is_active,
-  validator(editschema),
   find_id,
-  is_property_of,
+  is_property_of_chapter,
   destroy
 );
 
