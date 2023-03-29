@@ -1,8 +1,13 @@
-import userRouter from "./users.js";
-import createError from "http-errors";
-
 import express from "express";
-let router = express.Router();
+import userRouter from "./auth.js";
+import authorRouter from "./authors.js";
+import chapterRouter from "./chapters.js";
+import mangaRouter from "./manga.js";
+import commentsRouter from './comments.js';
+import companyRouter from './companies.js'
+import paymentRouter from "./payment.js";
+
+const router = express.Router();
 
 function authorIsActive(req, res, next) {
   //Esto viene de passport
@@ -35,29 +40,19 @@ function authorIsActive(req, res, next) {
 }
 
 /* GET home page. */
-router.get(
-  "/",
-  /*passport.authenticate()*/ authorIsActive,
-  function (req, res, next) {
-    // try {
-    //   let user;
+router.get("/", function (req, res, next) {
+  res.render("index", {title: "Express"});
+});
 
-    //   if(user){
-    //     return res.status(200).json({
-    //       user: user
-    //     })
-    //   }
-    //   return next(createError(404, 'Usuario no encontrado'))
-    // } catch (err){
-    //   next(createError(500, 'Algo salió mal'))
-    // }
-
-    res.status(200).json({
-      message: "Llegaste hasta el controlador",
-    });
-  }
-);
-
-router.use("/users", userRouter);
+//rutas de todos los recursos
+//a traves del metodo .use() le indico al enrutador principal que use esas rutas con esa palabrita(endpoint)
+router.use("/auth", userRouter);
+router.use("/authors", authorRouter);
+router.use("/mangas", mangaRouter);
+router.use("/chapters", chapterRouter);
+router.use("/comments", commentsRouter);
+router.use("/companies", companyRouter)
+router.use("/payment", paymentRouter);
+// router.use("/categories", categories);
 
 export default router;
