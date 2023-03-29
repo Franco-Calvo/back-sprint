@@ -22,9 +22,7 @@ const {read_all_active} = readAll
 
 let router = express.Router();
 
-<<<<<<< HEAD
 router.post("/",passport.authenticate('jwt',{session:false}),validator(schema), create );
-=======
 router.post("/",passport.authenticate("jwt", { session: false }),validator(schema),create);
 router.get("/me", passport.authenticate("jwt", { session:false }), find_id, get_me );
 router.put("/me", passport.authenticate("jwt", { session:false }),validator(schemaUpdate), find_id,is_active, update )
@@ -32,7 +30,5 @@ router.get("/:id", get_one);
 
 router.put("/admin/:id",passport.authenticate("jwt", { session:false })  ,update_active)
 router.get("/admin/prueba", passport.authenticate("jwt", { session:false }),  read_all_active)
-
->>>>>>> 1c8275ba0ad0c1cef56960480fbea8912a2cd258
 
 export default router;
