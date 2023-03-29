@@ -10,8 +10,8 @@ const schema = Joi.object({
     .min(3)
     .max(30)
     .messages({
-        "string.min": "The name must have at least 3 characters",
-        "string.max": "The name must have a maximum of 30 characters",
+        "string.min": "The title must have at least 3 characters",
+        "string.max": "The title must have a maximum of 30 characters",
   }),
     cover_photo: Joi
         .string()
@@ -22,8 +22,8 @@ const schema = Joi.object({
         .min(20)
         .max(200)
         .messages({
-            "string.min": "The name must have at least 20 characters",
-            "string.max": "The name must have a maximum of 200 characters",
+            "string.min": "Descripcion must have at least 20 characters",
+            "string.max": "Description must have a maximum of 200 characters",
       }),
     category_id: Joi
         .objectId()

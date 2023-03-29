@@ -1,7 +1,13 @@
 import express from 'express'
 import allController from '../controllers/category/all.js'
-let router = express.Router()
+import updateController from '../controllers/category/update.js'
+
 const { all } = allController
-router.get('/',all)
-   
-export default router;
+const {update} = updateController
+
+let router = express.Router();
+
+router.get('/', all)
+router.put('/:id', update)
+
+export default router

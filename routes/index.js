@@ -3,9 +3,11 @@ import userRouter from "./auth.js";
 import authorRouter from "./authors.js";
 import chapterRouter from "./chapters.js";
 import mangaRouter from "./manga.js";
-import categoryRouter from "./categories.js"
+import commentsRouter from './comments.js';
+import companyRouter from './companies.js'
+import paymentRouter from "./payment.js";
 
-let router = express.Router();
+const router = express.Router();
 
 function authorIsActive(req, res, next) {
   //Esto viene de passport
@@ -39,7 +41,7 @@ function authorIsActive(req, res, next) {
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-    res.render("index", { title: "Express" });
+  res.render("index", {title: "Express"});
 });
 
 //rutas de todos los recursos
@@ -48,6 +50,9 @@ router.use("/auth", userRouter);
 router.use("/authors", authorRouter);
 router.use("/mangas", mangaRouter);
 router.use("/chapters", chapterRouter);
-router.use("/categories", categoryRouter);
+router.use("/comments", commentsRouter);
+router.use("/companies", companyRouter)
+router.use("/payment", paymentRouter);
+// router.use("/categories", categories);
 
 export default router;

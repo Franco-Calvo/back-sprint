@@ -1,16 +1,21 @@
-import Manga from '../../models/Manga.js'
+import Manga from "../../models/Manga.js";
+import Author from "../../models/Author.js";
 
-async function is_property_of(req,res,next) {
-    const manga = await Manga.findOne({
-        manga_id:req.body.manga_id,
-        author_id: req.body.author_id})
-    if (manga) {
-        return next()
-    }
-    return res.status(400).json({
-        succes:false,
-        message: 'The manga is not by the author!',
-        data: manga
-    })
+async function is_property_of(req, res, next) {
+  req.body.manga_id === undefined ? (req.body.manga_id = req.params.id) : null;
+  const author = await Author.findOne({
+    user_id: req.user._id,
+  });
+  const manga = await Manga.findOne({
+    _id: req.body.manga_id,
+    author_id: author._id,
+  });
+  if (manga) {
+    return next();
+  }
+  return res.status(400).json({
+    succes: false,
+    message: "The manga is not by the author!",
+  });
 }
-export default is_property_of
+export default is_property_of;
